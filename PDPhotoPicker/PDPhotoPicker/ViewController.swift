@@ -132,8 +132,17 @@ extension ViewController {
 extension ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? AlbumViewController
-        destination?.closure = {
-            self.updateUI()
+        destination?.closure = { collection in
+            let result = PHAsset.fetchAssets(in: collection, options: nil)
+            self.assets = []
+            result.enumerateObjects { asset, _, _ in
+                self.assets.append(asset)
+            }
+            self.collectionView.reloadData()
+            guard self.assets.count > 0 else { return }
+            self.collectionView.scrollToItem(at: .init(row: 0, section: 0),
+                                             at: .top,
+                                             animated: true)
         }
     }
 }

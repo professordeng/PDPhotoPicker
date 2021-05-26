@@ -133,7 +133,9 @@ extension ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? AlbumViewController
         destination?.closure = { collection in
-            let result = PHAsset.fetchAssets(in: collection, options: nil)
+            let option = PHFetchOptions()
+            option.predicate = NSPredicate(format: "mediaType == %ld", PHAssetMediaType.image.rawValue)
+            let result = PHAsset.fetchAssets(in: collection, options: option)
             self.assets = []
             result.enumerateObjects { asset, _, _ in
                 self.assets.append(asset)

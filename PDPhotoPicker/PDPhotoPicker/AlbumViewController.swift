@@ -61,7 +61,8 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.reuseId, for: indexPath) as! Cell
-        cell.textLabel?.text = albums[indexPath.row].localizedTitle
+        let album = albums[indexPath.row]
+        cell.textLabel?.text = album.localizedTitle
         return cell
     }
 

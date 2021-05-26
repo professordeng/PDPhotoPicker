@@ -11,17 +11,13 @@ import Photos
 class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
-    // 所有相册
-    var albums: PHFetchResult<PHAssetCollection> = .init()
-
     // 所有照片数据
     var assets: [PHAsset] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         makeUI()
-        getAssets()
-        collectionView.reloadData()
+        getAccess()
     }
 }
 
@@ -38,6 +34,13 @@ extension ViewController {
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = .init(top: 10, left: 10, bottom: 10, right: 10)
     }
+
+    func updateUI() {
+        getAssets()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: Collection Delegate
@@ -49,10 +52,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.reuseId, for: indexPath) as! Cell
+        let asset = assets[indexPath.row] // (row: 0, section: 0) 被拍照占用
         // 1. 归一化使其不拉伸
         let options = PHImageRequestOptions()
         options.resizeMode = .exact
-        let asset = assets[indexPath.row] // (row: 0, section: 0) 被拍照占用
         let width = CGFloat(asset.pixelWidth)
         let height = CGFloat(asset.pixelHeight)
         let length = min(width, height)
@@ -75,8 +78,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 // MARK: - Photos
 
 extension ViewController {
+    func getAccess() {
+        PHPhotoLibrary.requestAuthorization { status in
+            if status == .authorized {
+                self.updateUI()
+            }
+        }
+    }
+
     func getAssets() {
         let options = PHFetchOptions()
+        // https://developer.apple.com/documentation/photokit/phfetchoptions#1965657
         options.sortDescriptors = [.init(key: "creationDate", ascending: false)]
         let result = PHAsset.fetchAssets(with: .image, options: options)
         result.enumerateObjects { asset, _, _ in
@@ -115,3 +127,13 @@ extension ViewController {
     }
 }
 
+// MARK: - Navigation
+
+extension ViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? AlbumViewController
+        destination?.closure = {
+            self.updateUI()
+        }
+    }
+}

@@ -13,6 +13,7 @@
 		049D8339265DED5A00D47908 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049D8337265DED5A00D47908 /* Main.storyboard */; };
 		049D833B265DED5D00D47908 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049D833A265DED5D00D47908 /* Assets.xcassets */; };
 		049D833E265DED5D00D47908 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049D833C265DED5D00D47908 /* LaunchScreen.storyboard */; };
+		049D8346265E038F00D47908 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D8345265E038F00D47908 /* AlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		049D833A265DED5D00D47908 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049D833D265DED5D00D47908 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		049D833F265DED5D00D47908 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049D8345265E038F00D47908 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				049D8331265DED5A00D47908 /* AppDelegate.swift */,
 				049D8333265DED5A00D47908 /* SceneDelegate.swift */,
 				049D8335265DED5A00D47908 /* ViewController.swift */,
+				049D8345265E038F00D47908 /* AlbumViewController.swift */,
 				049D8337265DED5A00D47908 /* Main.storyboard */,
 				049D833A265DED5D00D47908 /* Assets.xcassets */,
 				049D833C265DED5D00D47908 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049D8346265E038F00D47908 /* AlbumViewController.swift in Sources */,
 				049D8336265DED5A00D47908 /* ViewController.swift in Sources */,
 				049D8332265DED5A00D47908 /* AppDelegate.swift in Sources */,
 				049D8334265DED5A00D47908 /* SceneDelegate.swift in Sources */,

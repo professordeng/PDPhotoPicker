@@ -39,7 +39,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6gA-8E-kVb">
-                        <barButtonItem key="rightBarButtonItem" title="选择文件夹" id="Wrt-6l-cDQ"/>
+                        <barButtonItem key="backBarButtonItem" title="返回" id="Frb-b0-4x1"/>
+                        <barButtonItem key="rightBarButtonItem" title="选择文件夹" id="Wrt-6l-cDQ">
+                            <connections>
+                                <segue destination="6Uu-aK-3Ea" kind="show" id="UyA-wD-E3E"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dGe-9x-I6h" id="dRF-Lf-HYJ"/>
@@ -48,6 +53,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="113.83928571428571"/>
+        </scene>
+        <!--Album View Controller-->
+        <scene sceneID="Fea-i3-Phj">
+            <objects>
+                <viewController id="6Uu-aK-3Ea" customClass="AlbumViewController" customModule="PDPhotoPicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mqx-x7-0c3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Tyo-Ku-zNN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uDH-Dg-Sdy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygd-iH-cJU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1946" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ll4-M9-ltq">
